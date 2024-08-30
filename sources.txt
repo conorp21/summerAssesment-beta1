@@ -1,0 +1,137 @@
+https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-landscapes-154686
+
+
+original name:Cliff_10 
+new name: Cliff_10
+changes: y scale changed from 1 to 2 
+
+original name:Cliff_08
+new name: Cliff_08
+changes: y scale changed from 1 to 2
+
+original name:Cliff_09
+new name: Cliff_09
+changes: y scale changed from 1 to 2
+
+original name:Land_MAT
+new name: Land_MAT
+changes:none
+original name:Rock_MAT
+new name: Rock_MAT
+changes:none
+
+original name: Rock_016
+new name: Rock_016
+changes:scale changed to 60,150,100 
+
+
+https://vle-bn.tudublin.ie/pluginfile.php/329276/mod_folder/content/0/Prototype%202%20-%20Direct%20Download.zip?forcedownload=1
+
+original SimpleFarmer_White
+new name: SimpleFarmer_White
+changes:added rigid body, box collider and player control script 
+
+
+https://pixabay.com/sound-effects/game-music-loop-6-144641/
+
+original name: game-music-loop-6-144641
+new name: game-music-loop-6-144641
+changes: none
+
+https://freesound.org/people/whisperbandnumber1/sounds/397276/
+
+original name: 397276__whisperbandnumber1__grunt1
+new name: 397276__whisperbandnumber1__grunt1
+changes: none
+
+https://freesound.org/people/pekena_larva/sounds/667291/
+
+original name: 667291__pekena_larva__voc_male_jump_03
+new name:667291__pekena_larva__voc_male_jump_03
+changes: none
+
+https://freesound.org/people/Irolan/sounds/735168/
+
+
+original name: 735168__irolan__item-pickup-chime
+new name:735168__irolan__item-pickup-chime
+changes: none
+
+
+https://freesound.org/people/JPolito/sounds/391712/
+
+original name: 391712__jpolito__jp_doorunlocked03
+new name:391712__jpolito__jp_doorunlocked03
+changes: none
+
+https://freesound.org/people/JPolito/sounds/391710/
+
+original name: 391710__jpolito__jp_doorlocked06
+new name:391710__jpolito__jp_doorlocked06
+changes: none
+
+https://freesound.org/people/jalastram/sounds/317777/
+original name: 317777__jalastram__sfx_powerup_09
+new name:317777__jalastram__sfx_powerup_09
+changes: none
+
+https://freesound.org/people/EdgardEdition/sounds/113635/
+
+original name: 113635__edgardedition__click5
+new name:113635__edgardedition__click5
+changes: none
+
+
+chatgpt.com 
+
+game timer code 
+
+prompt give me the code to add a timer to a game using textmesh pro text
+
+using UnityEngine;
+using TMPro;  // Import the TextMeshPro namespace
+
+public class GameTimer : MonoBehaviour
+{
+    public float timeRemaining = 60f;  // Set the starting time (in seconds)
+    public bool timerIsRunning = false;  // Whether the timer is currently running
+    public TextMeshProUGUI timeText;  // Reference to the TextMeshProUGUI element
+
+    void Start()
+    {
+        // Start the timer
+        timerIsRunning = true;
+    }
+
+    void Update()
+    {
+        if (timerIsRunning)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;  // Decrease the timer
+                UpdateTimerDisplay(timeRemaining);  // Update the UI display
+            }
+            else
+            {
+                timeRemaining = 0;
+                timerIsRunning = false;  // Stop the timer
+                // You can trigger an event here, like ending the game
+            }
+        }
+    }
+
+    void UpdateTimerDisplay(float timeToDisplay)
+    {
+        timeToDisplay += 1;  // Add 1 to display time in full seconds
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);  // Calculate minutes
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);  // Calculate seconds
+        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);  // Format and display
+    }
+}
+
+
+
+
+
+
