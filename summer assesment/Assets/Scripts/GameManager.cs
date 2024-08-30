@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class GameManager : MonoBehaviour
@@ -16,6 +17,10 @@ public class GameManager : MonoBehaviour
     public int numberOfPowerups;
     public Vector2[] enemyPositions;
     public GameObject enemyPrefab;
+
+     public TextMeshProUGUI LivesText;  
+    public TextMeshProUGUI Keystext;
+    
 
     void Awake()
     {
@@ -46,6 +51,12 @@ public class GameManager : MonoBehaviour
         }
         
     }   
+
+    void Update()
+    {
+        UpdateKeys();
+        UpdateLives();
+    }
 
       public void AddLife()
     {
@@ -115,6 +126,24 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(enemyPrefab, new Vector3(enemyPositions[i].x, enemyPositions[i].y, 0), Quaternion.identity);
         }
+    }
+
+    void UpdateLives()
+    {
+         if (LivesText != null)
+        {
+            LivesText.text = "Lives: " + playerLives.ToString();
+        }
+
+    }
+
+    void UpdateKeys()
+    {
+         if (Keystext != null)
+        {
+            Keystext.text = "Keys: " + playerKeys.ToString();
+        }
+
     }
 }
 

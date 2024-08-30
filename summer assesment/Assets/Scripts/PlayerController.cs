@@ -8,11 +8,19 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 1500f;
     private Rigidbody rb;
+    private AudioSource PlayerAudio;
+    public AudioClip hurtSound;
+    public AudioClip jumpSound;
+    public AudioClip pickupsound;
+    public AudioClip unlocksound;
+    public AudioClip lockedsound;
+    public AudioClip powerupSound;
     private bool isGrounded;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        PlayerAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -29,7 +37,9 @@ public class PlayerController : MonoBehaviour
         {
             // Make sure to use impulse for jump instead of lift 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+             PlayerAudio.PlayOneShot(jumpSound);
             isGrounded = false;
+            
         }
     }
 
@@ -65,6 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Key"))
         {
+            PlayerAudio.PlayOneShot(pickupsound);
             GameManager.instance.AddKey();
             Destroy(other.gameObject);
         }
@@ -72,12 +83,19 @@ public class PlayerController : MonoBehaviour
         {
             if (GameManager.instance.playerKeys > 2)
             {
+                PlayerAudio.PlayOneShot(unlocksound);
                 SceneManager.LoadScene("levelWon");
+            }
+            else if (GameManager.instance.playerKeys < 3)
+            {
+                PlayerAudio.PlayOneShot(lockedsound);
+
             }
         }
         else if (other.gameObject.CompareTag("Enemy"))
         {
             GameManager.instance.RemoveLife();
+            PlayerAudio.PlayOneShot(hurtSound);
              if (GameManager.instance.showlife() == 0)
             {
                 Destroy(gameObject);
@@ -87,6 +105,7 @@ public class PlayerController : MonoBehaviour
         }
        else if (other.gameObject.CompareTag("Powerup"))
         {
+            PlayerAudio.PlayOneShot(powerupSound);
             GameManager.instance.AddLife();
             Destroy(other.gameObject);
         }

@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game3.unity
     guid: 773211de541868845bd9693d442677e8
+  - enabled: 1
+    path: Assets/Scenes/levelWon.unity
+    guid: a686c563a63fb6147a83fbd87e143912
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

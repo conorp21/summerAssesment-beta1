@@ -18,7 +18,7 @@ public class platformMove : MonoBehaviour
     void Update()
     {
         
-        Vector3 moveDirection = moveRight ? Vector3.right : Vector3.left;
+        Vector3 moveDirection = moveRight ? Vector3.up : Vector3.down;
 
       
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
